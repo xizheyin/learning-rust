@@ -127,6 +127,9 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
+                        <a href="https://github.com/xizheyin/learning-rust" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
 
                     </div>
                 </div>
@@ -154,13 +157,6 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="本书介绍"><a class="header" href="#本书介绍">本书介绍</a></h1>
-<h2 id="目录"><a class="header" href="#目录">目录</a></h2>
-<ul>
-<li><a href="./ch0.html">为什么是这本书</a></li>
-<li><a href="./ch1.html">Rust语言背景与发展</a></li>
-<li><a href="./ch2.html">学习Rust的计算机基础</a></li>
-<li><a href="copyright.html">版权声明</a></li>
-</ul>
 <h2 id="为什么要有这本书"><a class="header" href="#为什么要有这本书">为什么要有这本书？</a></h2>
 <p>很多人觉得 Rust 难学，第一反应是"这门语言语法太怪了""所有权、生命周期太抽象了"，但实际上，<strong>大部分人学不会 Rust，并不是因为 Rust 本身有多难，而是因为缺乏计算机基础知识</strong>。</p>
 <p>在实际教学和企业培训中，我们发现：</p>
@@ -173,6 +169,15 @@
 <p>你不仅能学到 Rust 的语法和工程实践，还能系统梳理计算机组成、内存管理、操作系统、并发原理等底层知识。
 很多 Rust 的设计点，都会结合其他语言（更多是C/C++）和底层原理对比讲解，帮助你建立"迁移思维"。
 这样学 Rust，不仅能写出高质量代码，更能打下坚实的计算机基础，为后续学习任何系统级开发打好底子。</p>
+<h2 id="ai-时代为什么更要修炼内力"><a class="header" href="#ai-时代为什么更要修炼内力">AI 时代，为什么更要修炼"内力"？</a></h2>
+<p>也许你会问：现在AI工具这么强大，写代码都能自动生成了，为什么还要花时间打基础、学底层？</p>
+<p><strong>答案很简单：AI可以帮你写代码，但只有你自己理解底层原理，才能写出真正高质量、可控、安全的系统。</strong></p>
+<p>AI能帮你生成函数、补全语法，但遇到复杂的系统设计、性能优化、并发安全、底层bug时，只有"内力"深厚的人才能看懂、调优、把控全局。
+如果你只会"用AI抄代码"，遇到AI生成的代码有隐患、性能瓶颈、架构缺陷时，你很难发现和修正。
+未来AI会成为开发者的好帮手，但<strong>只有基础扎实、理解原理的人，才能驾驭AI工具，而不是被AI限制思维和能力</strong>。</p>
+<p><strong>所以，AI时代更要修炼内力。</strong>
+你会发现，越是底层功夫扎实，越能用AI做更高效的开发、做更有创造力的系统设计。
+这本书希望带你"内外兼修"，让你在AI时代依然有不可替代的核心竞争力。</p>
 <p><strong>适合人群：</strong></p>
 <ul>
 <li>有 C 语言基础，但对底层原理不熟悉的开发者</li>
@@ -182,6 +187,13 @@
 <blockquote>
 <p>这本书不是单纯教你 Rust 语法，而是带你"内外兼修"，让你在学 Rust 的同时，补齐计算机基础，提升底层功力，成为真正的现代系统开发者。</p>
 </blockquote>
+<h2 id="目录"><a class="header" href="#目录">目录</a></h2>
+<ul>
+<li><a href="./ch0.html">为什么是这本书</a></li>
+<li><a href="./ch1.html">Rust语言背景与发展</a></li>
+<li><a href="./ch2.html">学习Rust的计算机基础</a></li>
+<li><a href="copyright.html">版权声明</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="第一章rust语言背景与发展"><a class="header" href="#第一章rust语言背景与发展">第一章：Rust语言背景与发展</a></h1>
 <h2 id="11-计算机语言发展简史"><a class="header" href="#11-计算机语言发展简史">1.1 计算机语言发展简史</a></h2>
 <p>在正式学习Rust之前，我们先来回顾一下计算机编程语言的发展历程。C语言自1972年诞生以来，凭借其高效、灵活和接近底层的特性，成为了系统级开发的事实标准。此后，C++、Java、Python、Go等语言相继出现，各自针对不同的应用场景和开发需求进行了优化。</p>

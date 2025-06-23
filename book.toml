@@ -4,3 +4,7 @@ language = "en"
 multilingual = false
 src = "src"
 title = "New for Rust"
+
+
+[output.html]
+git-repository-url = "https://github.com/xizheyin/learning-rust"
