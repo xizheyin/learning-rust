@@ -160,10 +160,30 @@
 <h2 id="12-rust的诞生背景与设计目标"><a class="header" href="#12-rust的诞生背景与设计目标">1.2 Rust的诞生背景与设计目标</a></h2>
 <p>Rust最初由Mozilla工程师Graydon Hoare于2010年发起，目标是打造一种既能像C/C++一样高效，又能最大程度保证安全性的系统级编程语言。Rust的核心设计理念包括：</p>
 <ul>
-<li><strong>内存安全</strong>：通过所有权（Ownership）和借用（Borrowing）机制，杜绝野指针、悬垂引用等问题。</li>
-<li><strong>并发安全</strong>：在编译期防止数据竞争，提升多线程编程的可靠性。</li>
-<li><strong>高性能</strong>：零成本抽象，性能媲美C/C++。</li>
-<li><strong>现代化工具链</strong>：内置包管理、构建、测试和文档生成工具，提升开发效率。</li>
+<li>
+<p><strong>内存安全</strong>：指的是程序不会出现"野指针"、"悬垂引用"或"内存泄漏"等问题。可以理解为你租了一间房子，钥匙只在你手里，搬走时房东会自动收回钥匙，别人无法再进来捣乱。Rust通过所有权（Ownership）和借用（Borrowing）机制，保证每一块内存都有明确的"主人"，用完就自动归还，防止"房子没人管"或"钥匙乱传"导致的混乱。</p>
+<ul>
+<li>许多传统语言（如C、C++）没有内存安全机制，开发者需要手动管理内存，容易出现野指针、内存泄漏等问题。Java、Python等虽然有垃圾回收（GC），但仍可能因引用遗留等原因出现内存泄漏。</li>
+</ul>
+</li>
+<li>
+<p><strong>并发安全</strong>：并发是指多个任务（比如多个线程）同时运行。并发安全意味着不会因为多个线程同时操作同一份数据而出错。就像几个人同时往同一个快递箱里放东西，如果没有规则，可能会把东西弄丢或打架。Rust在编译阶段就会检查你的代码，确保不会出现"数据竞争"，即不会有两个线程同时修改同一份数据，避免了多线程下常见的隐蔽bug。</p>
+<ul>
+<li>C、C++等语言的并发安全主要靠开发者自觉和手动加锁，编译器无法帮你发现数据竞争。Java、Python等虽然有线程机制，但也无法在编译期彻底防止并发bug。</li>
+</ul>
+</li>
+<li>
+<p><strong>高性能</strong>：Rust追求和C/C++一样的运行效率。所谓"零成本抽象"，就是你用高级语法写的代码，编译后和手写底层代码一样快，没有额外的性能损耗。比如你用for循环、迭代器等高级写法，编译器会自动优化成最快的机器码，既易写易读，又不牺牲速度。</p>
+<ul>
+<li>一些高级语言（如Python、JavaScript）虽然易用，但由于解释执行或虚拟机机制，运行效率远低于C、C++和Rust。C++虽然高效，但有些高级特性（如虚函数、多态）会带来一定的性能开销。</li>
+</ul>
+</li>
+<li>
+<p><strong>现代化工具链</strong>：Rust自带一整套开发工具，比如包管理（cargo）、自动化测试、文档生成、代码格式化等。就像买了一台新电脑，系统和常用软件都帮你装好了，不用再到处找驱动、装插件。这样可以大大提升开发效率，团队协作也更方便。</p>
+<ul>
+<li>许多老牌语言（如C、C++）缺乏统一的官方工具链，包管理、构建、测试等需要依赖第三方工具，配置繁琐。Python、Java等虽然有包管理工具，但集成度和一致性不如Rust的cargo。</li>
+</ul>
+</li>
 </ul>
 <h2 id="13-rust与cc的对比"><a class="header" href="#13-rust与cc的对比">1.3 Rust与C/C++的对比</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>特性</th><th>C/C++</th><th>Rust</th></tr></thead><tbody>
@@ -176,8 +196,16 @@
 </div>
 <p>Rust并不是要取代C/C++，而是为系统级开发提供一种更安全、更现代的选择。</p>
 <h2 id="14-rust的实际应用与生态"><a class="header" href="#14-rust的实际应用与生态">1.4 Rust的实际应用与生态</a></h2>
-<p>目前，Rust已被广泛应用于浏览器（如Firefox的Servo引擎）、区块链、云计算、嵌入式开发等领域。许多知名企业（如微软、亚马逊、谷歌等）都在积极采用Rust来提升产品的安全性和性能。</p>
-<p>Rust社区活跃，生态丰富。crates.io上有大量高质量的第三方库，极大地提升了开发效率。</p>
+<p>Rust不仅在技术圈内备受推崇，近年来更是上升到国家战略层面。2024年，美国拜登政府发布政策，<strong>明确推动在关键基础设施和政府软件项目中采用Rust语言，理由是Rust能有效防止内存安全漏洞，提升国家网络安全水平</strong>。这一政策被多家主流媒体和安全专家解读为"软件安全领域的里程碑"。</p>
+<p>Rust的影响力远不止于此：</p>
+<ul>
+<li><strong>工业界广泛应用</strong>：微软、亚马逊、谷歌、Meta（Facebook）、Cloudflare等科技巨头都在核心产品中引入Rust。例如，微软在Windows底层组件中逐步用Rust替换C/C++，以减少安全漏洞；亚马逊的云服务（AWS）也有大量Rust代码。</li>
+<li><strong>开源社区活跃</strong>：Rust连续多年被Stack Overflow评为"最受欢迎的编程语言"，社区贡献者众多，生态繁荣。参考：<a href="https://survey.stackoverflow.co/2024/technology#admired-and-desired-language-desire-admire">https://survey.stackoverflow.co/2024/technology#admired-and-desired-language-desire-admire</a></li>
+<li><strong>安全与高性能并重</strong>：Rust被广泛用于浏览器引擎（如Firefox的Servo）、区块链、嵌入式、物联网、Web后端等领域，尤其适合对安全性和性能要求极高的场景。</li>
+<li><strong>政策推动与标准化</strong>：除了美国，欧盟、日本等也在推动关键基础设施采用更安全的系统级语言，Rust成为首选之一。</li>
+<li><strong>中国科技巨头积极采用</strong>：阿里巴巴、字节跳动、腾讯、华为等国内大型互联网公司也在核心系统、云计算、数据库、区块链等领域积极引入Rust。例如，阿里巴巴在云原生基础设施和高性能服务中使用Rust提升安全性和并发性能；字节跳动在推荐系统、分布式存储等场景采用Rust重构关键模块；腾讯和华为也在操作系统、物联网等项目中推动Rust的落地。越来越多的中国初创公司和开源社区也在拥抱Rust，推动其在国内生态的繁荣发展。</li>
+</ul>
+<p>这些趋势表明，Rust不仅是技术创新的代表，更是全球软件安全和基础设施现代化的重要推动力。学习Rust，不仅能提升个人技术竞争力，也有助于把握未来行业发展的脉搏。</p>
 <h2 id="15-安装rust开发环境"><a class="header" href="#15-安装rust开发环境">1.5 安装Rust开发环境</a></h2>
 <p>下面我们来动手安装Rust开发环境，并编写第一个Rust程序。</p>
 <h3 id="151-安装rust"><a class="header" href="#151-安装rust">1.5.1 安装Rust</a></h3>
@@ -214,9 +242,180 @@ cargo run
 <li>Rust的所有权机制能解决哪些C语言常见的bug？</li>
 <li>试着用C语言写一个"Hello, world!"程序，并与Rust的版本进行对比，有哪些异同？</li>
 </ol>
-<h2 id="17-计算机基础回顾与rust的定位"><a class="header" href="#17-计算机基础回顾与rust的定位">1.7 计算机基础回顾与Rust的定位</a></h2>
-<h3 id="171-程序的编译与执行流程"><a class="header" href="#171-程序的编译与执行流程">1.7.1 程序的编译与执行流程</a></h3>
-<p>在C语言中，源代码（.c）会经过预处理、编译、链接等多个阶段，最终生成可执行文件。Rust的编译流程与C类似，但Rust的编译器（rustc）会在编译阶段做更严格的静态检查，帮助开发者提前发现潜在的内存和并发问题。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="第二章计算机基础与rust定位"><a class="header" href="#第二章计算机基础与rust定位">第二章：计算机基础与Rust定位</a></h1>
+<p>对于一些小白来说，第一章我们操作的安装Rust的操作，其实是一知半解的。Rust是一个编程语言 or 软件 or 什么别的？ <code>cargo</code>又是什么东西。其实在学习编程的时候，很多人都是被这些底层的原理给吓跑了，因为在学校的时候，我们只是按照书本上的内容进行操作，进行配置环境，但是问到这是怎么运行的，就会说："我不道啊，都是老师教的。"这一章就是用来补齐一些计算机基础，从第一步开始就<strong>稳扎稳打、注重内力</strong>，这不仅对学习Rust有帮助，这是学习任何计算机相关的知识的基础。</p>
+<h2 id="20-计算机基础入门"><a class="header" href="#20-计算机基础入门">2.0 计算机基础入门</a></h2>
+<h3 id="201-计算机系统的基本组成"><a class="header" href="#201-计算机系统的基本组成">2.0.1 计算机系统的基本组成</a></h3>
+<p>计算机系统主要由<em>硬件</em>和<em>软件</em>两大部分组成，二者密不可分：</p>
+<ul>
+<li><strong>硬件</strong>：计算机的"躯壳"，包括CPU（中央处理器）、内存（RAM）、硬盘（存储）、输入输出设备（如键盘、鼠标、显示器等）。</li>
+<li><strong>软件</strong>：计算机的"灵魂"，包括操作系统（如Windows、Linux、macOS）和各种应用程序（如微信、浏览器、游戏等）。软件通过一系列指令控制硬件完成各种任务。</li>
+</ul>
+<h4 id="生活类比"><a class="header" href="#生活类比">生活类比：</a></h4>
+<ul>
+<li>硬件就像汽车的发动机、轮胎、方向盘等零件，软件就像驾驶员的操作方法、导航系统、音乐播放等功能。没有硬件，软件"无处可跑"；没有软件，硬件"不会动"。</li>
+<li>也可以用厨房来比喻：
+<ul>
+<li><strong>CPU</strong> 就像厨师，负责思考和做菜（处理数据和指令）。</li>
+<li><strong>内存</strong> 就像操作台，厨师把正在做的菜和用到的食材都放在这里，方便随时拿取。</li>
+<li><strong>硬盘</strong> 就像储藏室，存放大量还没用到的食材和工具，需要时再拿出来。</li>
+<li><strong>输入设备</strong>（如键盘、鼠标）就像点菜的顾客或送菜的服务员，把需求和信息传递给厨师。</li>
+<li><strong>输出设备</strong>（如显示器、打印机）就像上菜窗口，把做好的菜端给顾客。</li>
+<li><strong>软件</strong> 就像菜谱和餐厅的规则，指导厨师和服务员如何协作。</li>
+</ul>
+</li>
+</ul>
+<p>整个厨房高效运作，离不开每个环节的协作，这就像计算机硬件和软件的分工一样。</p>
+<h4 id="思考与解释"><a class="header" href="#思考与解释">思考与解释：</a></h4>
+<ul>
+<li><strong>为什么内存比硬盘小很多，但速度快很多？</strong>
+<ul>
+<li>操作台（内存）空间有限，但厨师可以非常快地拿取和处理。储藏室（硬盘）空间大，但每次取用都要走一趟，速度慢得多。</li>
+<li>内存技术快但贵，硬盘容量大但慢。</li>
+</ul>
+</li>
+<li><strong>为什么不能把所有东西都放在内存？</strong>
+<ul>
+<li>操作台太大既贵又占地方，很多食材暂时用不到，放在储藏室更合适。</li>
+</ul>
+</li>
+<li><strong>为什么程序运行时要"加载"到内存？</strong>
+<ul>
+<li>就像厨师做菜前要把食材从储藏室拿到操作台，程序运行前也要把数据和指令从硬盘搬到内存，CPU才能高效处理。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="202-软件是如何运行的"><a class="header" href="#202-软件是如何运行的">2.0.2 软件是如何运行的</a></h3>
+<p>计算机只能识别0和1（二进制），所有数据和指令最终都要转成0/1（二进制文件）。十六进制常用于表示内存地址和数据，便于阅读和调试。</p>
+<h4 id="编程语言的翻译器编译器和解释器"><a class="header" href="#编程语言的翻译器编译器和解释器">编程语言的翻译器：编译器和解释器</a></h4>
+<ul>
+<li><strong>编译器</strong>：一种特殊的软件工具（"翻译官"），能把我们写的"高级语言"代码（如C、Rust）一次性翻译成计算机能直接执行的"机器码"，生成可执行文件，运行速度快。</li>
+<li><strong>解释器</strong>：像"翻译员"，每次运行时逐行翻译代码，边翻译边执行，灵活但速度慢（如Python、JavaScript）。</li>
+</ul>
+<h5 id="生活化比喻"><a class="header" href="#生活化比喻">生活化比喻：</a></h5>
+<ul>
+<li>编译器像把一本英文小说全部翻译成中文再出版，读者可以直接看中文版。</li>
+<li>解释器像有个翻译员在你身边，每读一句英文就翻译一句中文，边听边翻译。</li>
+</ul>
+<h4 id="程序的运行流程"><a class="header" href="#程序的运行流程">程序的运行流程</a></h4>
+<p>我们平时写的代码（比如Rust、C、Python）其实是给人类自己看的"高级语言"，计算机本身是看不懂的。要让计算机执行，必须经过一系列"翻译"和"搬运"过程：</p>
+<ol>
+<li><strong>编写代码（高级语言）</strong>
+<ul>
+<li>就像厨师写了一份详细的菜谱，描述每一步怎么做。</li>
+</ul>
+</li>
+<li><strong>编译器翻译成二进制（机器码）</strong>
+<ul>
+<li>编译器就像一个专业的翻译官，把菜谱（高级语言）翻译成只有厨师（CPU）能看懂的"数字指令"（机器码），这些指令全是0和1。</li>
+<li>这个过程会生成一个"可执行文件"，比如Windows下的<code>.exe</code>文件，Linux下的无扩展文件。</li>
+</ul>
+</li>
+<li><strong>存入硬盘</strong>
+<ul>
+<li>翻译好的"机器码"文件会被保存到硬盘，就像把菜谱打印好、装订成册，放进仓库。</li>
+</ul>
+</li>
+<li><strong>加载到内存</strong>
+<ul>
+<li>当你要运行程序时，操作系统会把硬盘上的可执行文件"搬运"到内存（操作台）上。</li>
+<li>只有放到内存里，CPU才能快速读取和执行。</li>
+</ul>
+</li>
+<li><strong>CPU执行指令</strong>
+<ul>
+<li>CPU像一个超级快的厨师，按照内存里的"数字菜谱"一步步执行，把数据加工成你想要的结果。</li>
+</ul>
+</li>
+</ol>
+<h5 id="生活化比喻-1"><a class="header" href="#生活化比喻-1">生活化比喻：</a></h5>
+<ul>
+<li>你写了一份菜谱（代码），请翻译官（编译器）翻译成只有厨师能懂的暗号（机器码），把这本暗号菜谱（可执行文件）放进仓库（硬盘）。</li>
+<li>顾客点菜（你双击程序），服务员（操作系统）把菜谱从仓库搬到操作台（内存）。</li>
+<li>厨师（CPU）在操作台上按照暗号菜谱做菜，最后把菜端给顾客（输出结果）。</li>
+</ul>
+<h5 id="关键点总结"><a class="header" href="#关键点总结">关键点总结：</a></h5>
+<ul>
+<li><strong>编译器</strong>：把人类写的代码翻译成机器能懂的二进制文件。</li>
+<li><strong>硬盘</strong>：长期保存翻译好的程序。</li>
+<li><strong>内存</strong>：程序运行时的"临时工作区"，速度快。</li>
+<li><strong>CPU</strong>：真正执行指令的"大脑"。</li>
+</ul>
+<p>这样，整个"写代码到程序运行"的流程就像写菜谱、翻译、存放、搬运、做菜、上菜一样，每一步都环环相扣。</p>
+<h3 id="204-操作系统的作用"><a class="header" href="#204-操作系统的作用">2.0.4 操作系统的作用</a></h3>
+<p>操作系统负责管理硬件资源，为程序提供运行环境。它调度CPU、分配内存、管理文件和外设，让多个程序可以"看起来"同时运行。</p>
+<h3 id="205-进程与线程"><a class="header" href="#205-进程与线程">2.0.5 进程与线程</a></h3>
+<ul>
+<li><strong>进程</strong>：可以理解为正在运行的一个"程序实例"，比如你同时开着微信和浏览器，这就是两个进程。每个进程有自己独立的内存空间，互不干扰。
+<ul>
+<li>类比：进程就像一栋大楼里的不同公司，各自有自己的办公室和员工，互不打扰。</li>
+</ul>
+</li>
+<li><strong>线程</strong>：是进程内部的"执行小分队"，一个进程可以有多个线程同时工作。比如浏览器可以一边加载网页一边播放音乐，这通常是不同线程在协作。
+<ul>
+<li>类比：线程就像公司里的不同部门，大家在同一个办公室里协作完成不同任务。</li>
+</ul>
+</li>
+</ul>
+<h3 id="206-并发与并行"><a class="header" href="#206-并发与并行">2.0.6 并发与并行</a></h3>
+<ul>
+<li><strong>并发</strong>：多个任务"轮流"执行，看起来像同时进行（单核CPU下的多任务切换）。
+<ul>
+<li>类比：一个厨师轮流炒几道菜，虽然只有一口锅，但切换得快，顾客感觉每道菜都在做。</li>
+</ul>
+</li>
+<li><strong>并行</strong>：多个任务"真正"同时进行（多核CPU下，每个核各干一件事）。
+<ul>
+<li>类比：几位厨师各自炒一道菜，真正同时出锅，效率更高。</li>
+</ul>
+</li>
+</ul>
+<h3 id="207-变量内存与地址"><a class="header" href="#207-变量内存与地址">2.0.7 变量、内存与地址</a></h3>
+<ul>
+<li><strong>变量</strong>：程序中用来存储数据的"名字"，比如<code>int a = 10;</code>，a就是变量名。
+<ul>
+<li>类比：变量就像快递包裹上的标签，方便找到和区分不同的包裹。</li>
+</ul>
+</li>
+<li><strong>内存地址</strong>：每个变量在内存中都有唯一的编号（地址），可以用指针访问。
+<ul>
+<li>类比：内存地址就像快递仓库里每个货架的位置编号。</li>
+</ul>
+</li>
+<li><strong>指针</strong>：存储变量地址的特殊变量，C语言常用，Rust有更安全的引用机制。
+<ul>
+<li>类比：指针就像快递单，写着包裹存放的具体货架号。</li>
+</ul>
+</li>
+</ul>
+<h3 id="208-文件与文件系统"><a class="header" href="#208-文件与文件系统">2.0.8 文件与文件系统</a></h3>
+<ul>
+<li><strong>文件</strong>：数据的持久化存储单位，比如文档、图片、程序等。
+<ul>
+<li>类比：文件就像家里的各种文件夹、照片、账本，长期保存。</li>
+</ul>
+</li>
+<li><strong>文件系统</strong>：操作系统用来管理文件和目录的方式，比如Windows的NTFS、Linux的ext4等。
+<ul>
+<li>类比：文件系统就像图书馆的分类和借阅系统，帮你快速找到和管理书籍（文件）。</li>
+</ul>
+</li>
+<li>程序可以通过文件读写，把数据永久保存或读取出来。
+<ul>
+<li>类比：你可以把重要资料存进保险柜（写文件），需要时再取出来（读文件）。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="21-程序的编译与执行流程"><a class="header" href="#21-程序的编译与执行流程">2.1 程序的编译与执行流程</a></h2>
+<p>在C语言和Rust中，程序的运行就像工厂生产一件商品，分为多个环节：</p>
+<ol>
+<li><strong>预处理</strong>：就像工厂在生产前先准备好原材料（比如把所有需要的零件、说明书都找齐）。C语言会把<code>#include</code>的头文件、宏定义等都整理好。</li>
+<li><strong>编译</strong>：把原材料加工成半成品。源代码（.c或.rs文件）被翻译成机器能理解的"零件"（目标文件.o）。</li>
+<li><strong>链接</strong>：把所有半成品组装成完整的商品。多个目标文件和库文件被合成一个可执行文件。</li>
+<li><strong>运行</strong>：商品出厂，送到用户手中。操作系统把可执行文件加载到内存，CPU开始执行。</li>
+</ol>
 <div class="table-wrapper"><table><thead><tr><th>阶段</th><th>C语言</th><th>Rust语言</th></tr></thead><tbody>
 <tr><td>预处理</td><td>#include/#define等</td><td>宏展开</td></tr>
 <tr><td>编译</td><td>生成目标文件（.o）</td><td>生成目标文件（.o）</td></tr>
@@ -224,8 +423,29 @@ cargo run
 <tr><td>运行</td><td>操作系统加载执行</td><td>操作系统加载执行</td></tr>
 </tbody></table>
 </div>
-<p>Rust同样属于"静态编译型语言"，无需虚拟机，直接生成本地可执行文件，运行效率极高。</p>
-<h3 id="172-静态类型与动态类型"><a class="header" href="#172-静态类型与动态类型">1.7.2 静态类型与动态类型</a></h3>
+<h4 id="生活化比喻-2"><a class="header" href="#生活化比喻-2">生活化比喻：</a></h4>
+<ul>
+<li>可以把整个流程想象成做一道菜：
+<ol>
+<li><strong>预处理</strong>：先把菜谱、食材、调料都准备好。</li>
+<li><strong>编译</strong>：把食材切好、腌制、初步加工。</li>
+<li><strong>链接</strong>：把所有配料和主菜一起下锅，做成成品。</li>
+<li><strong>运行</strong>：把做好的菜端上桌，大家可以享用。</li>
+</ol>
+</li>
+</ul>
+<h4 id="静态编译型语言的优势"><a class="header" href="#静态编译型语言的优势">静态编译型语言的优势</a></h4>
+<ul>
+<li>C和Rust都属于"静态编译型语言"，就像工厂把所有零件都提前组装好，用户拿到手就是成品，直接用，不需要再加工。</li>
+<li>这和"虚拟机"语言（如Java）不同，Java像是把半成品发给用户，用户家里还要有一台"虚拟机"来组装和运行，速度慢一些，也更依赖环境。</li>
+</ul>
+<h4 id="具体意义"><a class="header" href="#具体意义">具体意义</a></h4>
+<ul>
+<li>Rust和C编译出来的程序可以直接在操作系统上运行，不需要额外的软件支持，启动快、效率高。</li>
+<li>这就像你买到的家电插上电就能用，而不是还要自己组装一遍。</li>
+</ul>
+<p>这样，哪怕你没有编程基础，也能直观理解"编译"、"链接"、"可执行文件"、"无需虚拟机"等术语背后的实际含义。</p>
+<h2 id="22-静态类型与动态类型"><a class="header" href="#22-静态类型与动态类型">2.2 静态类型与动态类型</a></h2>
 <ul>
 <li><strong>静态类型</strong>（如C、Rust）：变量类型在编译期确定，运行效率高，出错早发现。</li>
 <li><strong>动态类型</strong>（如Python、JavaScript）：变量类型在运行期确定，灵活但易出错。</li>
@@ -235,21 +455,21 @@ cargo run
 </span><span class="boring">fn main() {
 </span>let x = 42; // Rust会自动推断x为i32类型
 <span class="boring">}</span></code></pre></pre>
-<h3 id="173-内存管理方式的演变深入讲解"><a class="header" href="#173-内存管理方式的演变深入讲解">1.7.3 内存管理方式的演变（深入讲解）</a></h3>
+<h2 id="23-内存管理方式的演变深入讲解"><a class="header" href="#23-内存管理方式的演变深入讲解">2.3 内存管理方式的演变（深入讲解）</a></h2>
 <p>在C语言中，内存管理完全依赖开发者手动操作。比如：</p>
 <pre><code class="language-c">// C语言：手动分配和释放内存
 int* p = (int*)malloc(sizeof(int));
 *p = 42;
 free(p); // 如果忘记free，就会内存泄漏
 </code></pre>
-<h4 id="什么是野指针"><a class="header" href="#什么是野指针">什么是"野指针"？</a></h4>
+<h3 id="什么是野指针"><a class="header" href="#什么是野指针">什么是"野指针"？</a></h3>
 <p>野指针指的是指向已经被释放或未初始化内存的指针。比如：</p>
 <pre><code class="language-c">int* p = (int*)malloc(sizeof(int));
 free(p);
 *p = 10; // 此时p已经是野指针，操作会导致未定义行为
 </code></pre>
 <p>这种错误在C/C++中很常见，可能导致程序崩溃甚至安全漏洞。</p>
-<h4 id="rust如何避免野指针"><a class="header" href="#rust如何避免野指针">Rust如何避免野指针？</a></h4>
+<h3 id="rust如何避免野指针"><a class="header" href="#rust如何避免野指针">Rust如何避免野指针？</a></h3>
 <p>Rust通过所有权和生命周期机制，保证变量离开作用域时自动释放内存，且禁止悬垂引用：</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -260,7 +480,7 @@ free(p);
 // println!("{}", x); // 编译报错：x已被释放
 <span class="boring">}</span></code></pre></pre>
 <p>Rust编译器会在编译期阻止所有悬垂指针和野指针的出现。</p>
-<h4 id="什么是内存泄漏"><a class="header" href="#什么是内存泄漏">什么是"内存泄漏"？</a></h4>
+<h3 id="什么是内存泄漏"><a class="header" href="#什么是内存泄漏">什么是"内存泄漏"？</a></h3>
 <p>内存泄漏是指程序分配了内存但没有释放，导致内存资源被长期占用。例如：</p>
 <pre><code class="language-c">void leak() {
     int* p = (int*)malloc(100);
@@ -270,12 +490,12 @@ free(p);
 <p>C/C++中这种问题很难彻底避免。</p>
 <p>Rust的所有权机制让资源自动释放，极大降低了内存泄漏的风险。</p>
 <hr />
-<h3 id="174-栈与堆的基础知识结合c与rust对比"><a class="header" href="#174-栈与堆的基础知识结合c与rust对比">1.7.4 栈与堆的基础知识（结合C与Rust对比）</a></h3>
+<h2 id="24-栈与堆的基础知识结合c与rust对比"><a class="header" href="#24-栈与堆的基础知识结合c与rust对比">2.4 栈与堆的基础知识（结合C与Rust对比）</a></h2>
 <ul>
 <li><strong>栈</strong>：像快递员送快递，先进后出，速度快，但空间有限。</li>
 <li><strong>堆</strong>：像仓库，随时存取，但需要自己记得取回，否则会堆积成"垃圾"。</li>
 </ul>
-<h4 id="c语言中的栈与堆"><a class="header" href="#c语言中的栈与堆">C语言中的栈与堆</a></h4>
+<h3 id="c语言中的栈与堆"><a class="header" href="#c语言中的栈与堆">C语言中的栈与堆</a></h3>
 <pre><code class="language-c">void foo() {
     int a = 10;      // 栈分配，foo结束自动释放
     int* p = malloc(sizeof(int)); // 堆分配，需要手动free
@@ -284,7 +504,7 @@ free(p);
     free(p);         // 忘记就会泄漏
 }
 </code></pre>
-<h4 id="rust中的栈与堆"><a class="header" href="#rust中的栈与堆">Rust中的栈与堆</a></h4>
+<h3 id="rust中的栈与堆"><a class="header" href="#rust中的栈与堆">Rust中的栈与堆</a></h3>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn foo() {
@@ -295,8 +515,8 @@ free(p);
 <span class="boring">}</span></code></pre></pre>
 <p>Rust的所有权和生命周期机制让你不用再担心"仓库忘记清理"的问题。</p>
 <hr />
-<h3 id="175-指针引用与数据竞争重点对比与举例"><a class="header" href="#175-指针引用与数据竞争重点对比与举例">1.7.5 指针、引用与数据竞争（重点对比与举例）</a></h3>
-<h4 id="c语言的指针与常见问题"><a class="header" href="#c语言的指针与常见问题">C语言的指针与常见问题</a></h4>
+<h2 id="25-指针引用与数据竞争重点对比与举例"><a class="header" href="#25-指针引用与数据竞争重点对比与举例">2.5 指针、引用与数据竞争（重点对比与举例）</a></h2>
+<h3 id="c语言的指针与常见问题"><a class="header" href="#c语言的指针与常见问题">C语言的指针与常见问题</a></h3>
 <ul>
 <li><strong>野指针</strong>：指向无效内存。</li>
 <li><strong>悬垂指针</strong>：指向已释放的内存。</li>
@@ -311,7 +531,7 @@ void* thread_func(void*) {
 }
 </code></pre>
 <p>如果两个线程同时修改counter，可能导致最终结果错误。</p>
-<h4 id="rust如何防止数据竞争"><a class="header" href="#rust如何防止数据竞争">Rust如何防止数据竞争？</a></h4>
+<h3 id="rust如何防止数据竞争"><a class="header" href="#rust如何防止数据竞争">Rust如何防止数据竞争？</a></h3>
 <p>Rust在编译期就会检查多线程共享变量的可变性和所有权，防止数据竞争：</p>
 <pre><pre class="playground"><code class="language-rust">use std::thread;
 use std::sync::{Arc, Mutex};
@@ -335,7 +555,7 @@ fn main() {
     println!("结果: {}", *counter.lock().unwrap());
 }</code></pre></pre>
 <p>Rust强制你用Arc（原子引用计数）和Mutex（互斥锁）来保证多线程安全，编译器会阻止不安全的并发代码。</p>
-<h4 id="rust的引用安全"><a class="header" href="#rust的引用安全">Rust的引用安全</a></h4>
+<h3 id="rust的引用安全"><a class="header" href="#rust的引用安全">Rust的引用安全</a></h3>
 <p>Rust区分可变引用（&amp;mut T）和不可变引用（&amp;T），同一时间只能有一个可变引用或多个不可变引用，杜绝了数据竞争和悬垂引用。</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -346,7 +566,7 @@ let y = &amp;mut x;
 <span class="boring">}</span></code></pre></pre>
 <p>这种严格的规则虽然一开始不太习惯，但极大提升了代码的安全性。</p>
 <hr />
-<h2 id="18-工程实践与团队协作初体验"><a class="header" href="#18-工程实践与团队协作初体验">1.8 工程实践与团队协作初体验</a></h2>
+<h2 id="26-工程实践与团队协作初体验"><a class="header" href="#26-工程实践与团队协作初体验">2.6 工程实践与团队协作初体验</a></h2>
 <p>Rust自带包管理和构建工具（cargo），新建、编译、测试、依赖管理一站式完成。推荐团队统一使用rustfmt（代码格式化）、clippy（代码静态检查），保证代码风格一致、质量可控。</p>
 <ul>
 <li><strong>文档注释</strong>：使用<code>///</code>为函数和模块添加文档注释。</li>
@@ -355,7 +575,7 @@ let y = &amp;mut x;
 </ul>
 <p>这些工具和规范，有助于团队协作和代码维护。</p>
 <hr />
-<h2 id="19-常见问题解答"><a class="header" href="#19-常见问题解答">1.9 常见问题解答</a></h2>
+<h2 id="27-常见问题解答"><a class="header" href="#27-常见问题解答">2.7 常见问题解答</a></h2>
 <ul>
 <li><strong>Rust为什么没有GC？</strong>
 Rust通过所有权和生命周期机制，在编译期自动管理内存，无需运行时GC，既安全又高效。</li>
@@ -367,7 +587,7 @@ Rust的所有权和借用机制更严格，能在编译期发现更多潜在问�
 对开发效率要求极高、生态依赖特定语言的快速原型开发，可能更适合用动态语言。</li>
 </ul>
 <hr />
-<h2 id="110-拓展阅读与社区资源"><a class="header" href="#110-拓展阅读与社区资源">1.10 拓展阅读与社区资源</a></h2>
+<h2 id="28-拓展阅读与社区资源"><a class="header" href="#28-拓展阅读与社区资源">2.8 拓展阅读与社区资源</a></h2>
 <ul>
 <li><a href="https://www.rust-lang.org/zh-CN/learn">Rust官方文档</a></li>
 <li><a href="https://doc.rust-lang.org/rust-by-example/">Rust by Example</a></li>
@@ -375,6 +595,15 @@ Rust的所有权和借用机制更严格，能在编译期发现更多潜在问�
 <li><a href="https://rustcc.cn/">Rust中文社区</a></li>
 </ul>
 <p>鼓励大家多参与社区讨论、提问和贡献代码，持续学习、共同进步！</p>
+<hr />
+<h2 id="29-小结与思考题"><a class="header" href="#29-小结与思考题">2.9 小结与思考题</a></h2>
+<p>本章我们回顾了编程语言的发展，了解了Rust的诞生背景、设计目标和核心优势，并完成了开发环境的安装和第一个程序的编写。Rust以其独特的安全性和高性能，正在成为越来越多企业的首选。</p>
+<h3 id="思考题-1"><a class="header" href="#思考题-1">思考题</a></h3>
+<ol>
+<li>你认为C语言在现代开发中最大的优势和劣势分别是什么？</li>
+<li>Rust的所有权机制能解决哪些C语言常见的bug？</li>
+<li>试着用C语言写一个"Hello, world!"程序，并与Rust的版本进行对比，有哪些异同？</li>
+</ol>
 
                     </main>
 
