@@ -1,75 +1,43 @@
-# New for Rust 学习教程 | New for Rust Tutorial
+[English Version](README.en.md)
 
-《New for Rust》是一套专为有C语言基础、但对Rust还不熟悉的开发者设计的系统入门与进阶教程，也适合作为企业内部的培训讲稿和自学资料。
+# 本书介绍
 
-New for Rust is a systematic Rust tutorial designed for developers with a C background but new to Rust. It is also suitable for corporate training and self-study.
+## 网站
 
----
+xizheyin.github.io/learning-rust
 
-## 项目简介 | Project Introduction
+## 为什么要有这本书？
 
-本教程以深入浅出的方式，带领读者从计算机基础、编程原理、Rust语法到工程实践、团队协作，循序渐进地掌握Rust语言及其在工业级项目中的应用。内容不仅涵盖Rust本身，还注重C与Rust的对比、工程规范、团队协作和实际案例。
+很多人觉得 Rust 难学，第一反应是"这门语言语法太怪了""所有权、生命周期太抽象了"，但实际上，**大部分人学不会 Rust，并不是因为 Rust 本身有多难，而是因为缺乏计算机基础知识**。
 
-This tutorial guides readers step by step from computer fundamentals, programming principles, Rust syntax to engineering practice and team collaboration. It covers not only Rust itself, but also C vs Rust comparisons, engineering standards, teamwork, and real-world cases.
+在实际教学和企业培训中，我们发现：
+- 很多同学虽然学过 C 语言，但对内存、进程、线程、文件系统、编译原理等底层知识并不扎实。
+- 一旦遇到 Rust 的所有权、借用、并发安全等设计理念，就会觉得"无从下手"，其实是因为底层原理没打好基础。
+- 很多 Rust 的"难点"，其实是现代系统编程的通用难点，只不过 Rust 让你必须正视它们。
 
----
+**本书的最大特色，就是在 Rust 学习过程中，穿插讲解计算机基础知识，也就是"内力"。**
 
-## 适用人群 | Target Audience
-- 有C语言基础但对Rust不熟悉的开发者
-- 企业新员工、技术团队成员
-- 希望将Rust应用于实际项目、追求高质量代码的工程师
-- 对现代系统编程、内存安全、并发性能等有兴趣的学习者
+你不仅能学到 Rust 的语法和工程实践，还能系统梳理计算机组成、内存管理、操作系统、并发原理等底层知识。
+很多 Rust 的设计点，都会结合其他语言（更多是C/C++）和底层原理对比讲解，帮助你建立"迁移思维"。
+这样学 Rust，不仅能写出高质量代码，更能打下坚实的计算机基础，为后续学习任何系统级开发打好底子。
 
-- Developers with C background but new to Rust
-- New employees or technical team members in companies
-- Engineers aiming to use Rust in real projects and pursue high-quality code
-- Learners interested in modern system programming, memory safety, concurrency, etc.
+## AI 时代，为什么更要修炼"内力"？
 
----
+也许你会问：现在AI工具这么强大，写代码都能自动生成了，为什么还要花时间打基础、学底层？
 
-## 主要内容 | Main Content
-- 计算机基础与编程原理 | Computer fundamentals & programming principles
-- Rust语言核心语法与特性 | Rust core syntax & features
-- C与Rust的对比与迁移思维 | C vs Rust comparison & migration
-- 内存管理、所有权、并发安全 | Memory management, ownership, concurrency safety
-- 工程实践、团队协作、代码规范 | Engineering practice, teamwork, code standards
-- Rust生态与常用库、项目实战 | Rust ecosystem, libraries, project practice
-- 与C语言互操作、FFI基础 | C interop, FFI basics
+**答案很简单：AI可以帮你写代码，但只有你自己理解底层原理，才能写出真正高质量、可控、安全的系统。**
 
----
+AI能帮你生成函数、补全语法，但遇到复杂的系统设计、性能优化、并发安全、底层bug时，只有"内力"深厚的人才能看懂、调优、把控全局。
+如果你只会"用AI抄代码"，遇到AI生成的代码有隐患、性能瓶颈、架构缺陷时，你很难发现和修正。
+未来AI会成为开发者的好帮手，但**只有基础扎实、理解原理的人，才能驾驭AI工具，而不是被AI限制思维和能力**。
 
-## 如何使用 | How to Use
-1. 按章节顺序阅读 `src/` 目录下的 Markdown 文件，建议配合实际代码练习。
-2. 推荐使用 [mdBook](https://rust-lang.github.io/mdBook/) 或 VSCode 插件进行预览和阅读体验。
-3. 每章结尾有思考题和实战练习，鼓励动手实践和团队讨论。
-4. 参考文档和社区资源见各章末尾拓展阅读。
+**所以，AI时代更要修炼内力。**
+你会发现，越是底层功夫扎实，越能用AI做更高效的开发、做更有创造力的系统设计。
+这本书希望带你"内外兼修"，让你在AI时代依然有不可替代的核心竞争力。
 
-1. Read the Markdown files in the `src/` directory in order. Practice with real code is highly recommended.
-2. Use [mdBook](https://rust-lang.github.io/mdBook/) or VSCode plugins for better reading experience.
-3. Each chapter ends with exercises and practical tasks. Hands-on practice and team discussion are encouraged.
-4. See further reading and community resources at the end of each chapter.
+**适合人群：**
+- 有 C 语言基础，但对底层原理不熟悉的开发者
+- 希望补齐"内力"，真正理解现代编程语言设计的同学
+- 想在企业、团队中推动高质量开发和工程实践的工程师
 
----
-
-## 参与和反馈 | Contribution & Feedback
-- 本书会持续更新，欢迎大家通过 Issue 或 Pull Request 贡献内容、纠错或提出建议。
-- 如有建议、错漏或合作需求，请在本仓库留言或联系项目组。
-- 英文版尚未启动，欢迎有能力的朋友参与英文翻译和内容完善！
-
-- This book will be continuously updated. Contributions, corrections, and suggestions via Issue or Pull Request are highly welcome.
-- For suggestions, corrections, or collaboration, please leave a message in this repo or contact the project team.
-- **English version is not yet started. Contributions to English translation and content are welcome!**
-
----
-
-## 版权声明 | License
-
-本教程内容仅供学习和企业内部培训使用，禁止未经授权的商业出版和盈利性传播。详见各章节开头的版权声明。
-
-This tutorial is for learning and internal corporate training only. Commercial publication and profit-oriented distribution are prohibited without permission. See copyright notice at the beginning of each chapter.
-
----
-
-让我们一起用Rust写出更安全、更高效、更现代的代码！
-
-Let's write safer, more efficient, and more modern code with Rust together!
+> 这本书不是单纯教你 Rust 语法，而是带你"内外兼修"，让你在学 Rust 的同时，补齐计算机基础，提升底层功力，成为真正的现代系统开发者。
