@@ -2,7 +2,7 @@
 
 # 本书介绍
 
-[本书网站](xizheyin.github.io/learning-rust)
+[本书网站](https://xizheyin.github.io/learning-rust)
 
 
 ## 为什么要有这本书？
