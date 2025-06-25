@@ -8,7 +8,7 @@ class MDBookSidebarScrollbox extends HTMLElement {
         super();
     }
     connectedCallback() {
-        this.innerHTML = '<ol class="chapter"><li class="chapter-item expanded "><a href="ch0.html"><strong aria-hidden="true">1.</strong> 本书介绍</a></li><li class="chapter-item expanded "><a href="ch1.html"><strong aria-hidden="true">2.</strong> Rust语言背景与发展</a></li><li class="chapter-item expanded "><a href="ch2.html"><strong aria-hidden="true">3.</strong> 学习Rust的计算机基础</a></li><li class="chapter-item expanded "><a href="copyright.html"><strong aria-hidden="true">4.</strong> 版权声明</a></li></ol>';
+        this.innerHTML = '<ol class="chapter"><li class="chapter-item expanded "><a href="ch0.html"><strong aria-hidden="true">1.</strong> 本书介绍</a></li><li class="chapter-item expanded "><a href="ch1.html"><strong aria-hidden="true">2.</strong> Rust语言背景与发展</a></li><li class="chapter-item expanded "><a href="ch2.html"><strong aria-hidden="true">3.</strong> 计算机基础</a></li><li class="chapter-item expanded "><a href="ch3.html"><strong aria-hidden="true">4.</strong> 程序编译与执行流程</a></li><li class="chapter-item expanded "><a href="ch4.html"><strong aria-hidden="true">5.</strong> Rust语言特性（与C对比）</a></li><li class="chapter-item expanded "><a href="copyright.html"><strong aria-hidden="true">6.</strong> 版权声明</a></li></ol>';
         // Set the current, active page, and reveal it if it's hidden
         let current_page = document.location.href.toString().split("#")[0];
         if (current_page.endsWith("/")) {

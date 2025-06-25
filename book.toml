@@ -8,3 +8,11 @@ title = "New for Rust"
 
 [output.html]
 git-repository-url = "https://github.com/xizheyin/learning-rust"
+
+[output.html.playground]
+editable = true
+copyable = true
+copy-js = true
+
+[output.html.playground.crates]
+rust = "https://play.rust-lang.org/"
