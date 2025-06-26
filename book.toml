@@ -3,7 +3,7 @@ authors = ["xizheyin"]
 language = "en"
 multilingual = false
 src = "src"
-title = "New for Rust"
+title = "Rust编程内功——零基础"
 
 
 [output.html]
