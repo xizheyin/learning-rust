@@ -1,4 +1,4 @@
-# 第一章：Rust语言背景与发展
+# 第1章：Rust语言背景与发展
 
 ## 1.1 计算机语言发展简史
 
@@ -47,65 +47,4 @@ Rust的影响力远不止于此：
 
 这些趋势表明，Rust不仅是技术创新的代表，更是全球软件安全和基础设施现代化的重要推动力。学习Rust，不仅能提升个人技术竞争力，也有助于把握未来行业发展的脉搏。
 
-## 1.5 安装Rust开发环境
 
-下面我们来动手安装Rust开发环境，并编写第一个Rust程序。
-
-### 1.5.1 安装Rust
-
-在Linux/macOS终端或Windows的WSL中，执行以下命令：
-
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-
-根据提示完成安装后，重启终端，输入：
-
-```bash
-rustc --version
-cargo --version
-```
-
-如果能看到版本号，说明安装成功。
-
-### 1.5.2 配置VSCode插件
-
-推荐安装"rust-analyzer"插件，获得更好的代码补全和语法提示体验。
-
-### 1.5.3 创建第一个Rust项目
-
-使用cargo新建项目：
-
-```bash
-cargo new hello_rust
-cd hello_rust
-cargo run
-```
-
-你会看到输出：
-
-```
-Hello, world!
-```
-
-#### 代码示例
-
-`src/main.rs` 文件内容如下：
-
-```rust
-fn main() {
-    println!("Hello, world!");
-}
-```
-
-是不是很熟悉？和C语言的`printf`类似，但Rust的`println!`是一个宏，后续我们会详细讲解。
-
-## 1.6 小结与思考题
-
-本章我们回顾了编程语言的发展，了解了Rust的诞生背景、设计目标和核心优势，并完成了开发环境的安装和第一个程序的编写。Rust以其独特的安全性和高性能，正在成为越来越多企业的首选。
-
-### 思考题
-
-1. 你认为C语言在现代开发中最大的优势和劣势分别是什么？
-2. Rust的所有权机制能解决哪些C语言常见的bug？
-3. 试着用C语言写一个"Hello, world!"程序，并与Rust的版本进行对比，有哪些异同？
