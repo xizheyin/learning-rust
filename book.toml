@@ -3,7 +3,7 @@ authors = ["xizheyin"]
 language = "en"
 multilingual = false
 src = "src"
-title = "Rust编程内功——零基础"
+title = "零基础Rust编程"
 
 
 [output.html]
