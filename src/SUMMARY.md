@@ -8,4 +8,5 @@
 - [Rust语言特性（与C对比）](./ch5.md)
 - [变量、数据类型与基本运算](./ch6.md)
 - [流程控制与模式匹配](./ch7.md)
+- [struct+trait设计哲学](./chn.md)
 - [版权声明](copyright.md)
