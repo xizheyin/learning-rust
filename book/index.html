@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>本书介绍 - Rust编程内功——零基础</title>
+        <title>本书介绍 - 零基础Rust编程</title>
 
 
         <!-- Custom HTML head -->
@@ -31,21 +31,33 @@
         <!-- Custom theme stylesheets -->
 
 
-        <!-- Provide site root to javascript -->
+        <!-- Provide site root and default themes to javascript -->
         <script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
     </head>
     <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -59,7 +71,8 @@
 
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script>
-            var theme;
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
@@ -72,8 +85,8 @@
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -109,18 +122,19 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
 
-                    <h1 class="menu-title">Rust编程内功——零基础</h1>
+                    <h1 class="menu-title">零基础Rust编程</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -157,44 +171,52 @@
                     <main>
                         <h1 id="本书介绍"><a class="header" href="#本书介绍">本书介绍</a></h1>
 <h2 id="为什么要有这本书"><a class="header" href="#为什么要有这本书">为什么要有这本书？</a></h2>
-<p>很多人觉得 Rust 难学，第一反应是"这门语言语法太怪了""所有权、生命周期太抽象了"，但实际上，<strong>大部分人学不会 Rust，并不是因为 Rust 本身有多难，而是因为缺乏计算机基础知识</strong>。</p>
-<p>在实际教学和企业培训中，我们发现：</p>
+<p>很多人觉得 Rust 难学，第一反应是"这门语言语法太怪了"，"所有权、生命周期太抽象了"。但实际上，<strong>大部分人学不会 Rust，并不是因为 Rust 本身有多难，而是因为缺乏计算机基础知识</strong>。</p>
+<p>在实际教学和培训中，我们发现一个有趣的现象：</p>
 <ul>
-<li>很多同学虽然学过 C 语言，但对内存、进程、线程、文件系统、编译原理等底层知识并不扎实。</li>
-<li>一旦遇到 Rust 的所有权、借用、并发安全等设计理念，就会觉得"无从下手"，其实是因为底层原理没打好基础。</li>
-<li>很多 Rust 的"难点"，其实是现代系统编程的通用难点，只不过 Rust 让你必须正视它们。</li>
+<li>很多同学虽然学过 C 语言，但对内存、进程、线程、文件系统、编译原理等底层知识并不扎实</li>
+<li>一旦遇到 Rust 的所有权、借用、并发安全等设计理念，就会觉得"无从下手"，其实是因为底层原理没打好基础</li>
+<li>很多 Rust 的"难点"，其实是现代系统编程的通用难点，只不过 Rust 让你必须正视它们</li>
 </ul>
-<p><strong>本书的最大特色，就是在 Rust 学习过程中，穿插讲解计算机基础知识，也就是"内力"。</strong></p>
-<p>你不仅能学到 Rust 的语法和工程实践，还能系统梳理计算机组成、内存管理、操作系统、并发原理等底层知识。
-很多 Rust 的设计点，都会结合其他语言（更多是C/C++）和底层原理对比讲解，帮助你建立"迁移思维"。
-这样学 Rust，不仅能写出高质量代码，更能打下坚实的计算机基础，为后续学习任何系统级开发打好底子。</p>
+<p><strong>这本书的最大特色，就是在 Rust 学习过程中，穿插讲解计算机基础知识，也就是"内力"。</strong></p>
+<p>你不仅能学到 Rust 的语法和工程实践，还能系统梳理计算机组成、内存管理、操作系统、并发原理等底层知识。很多 Rust 的设计点，都会结合其他语言（更多是C/C++）和底层原理对比讲解，帮助你建立"迁移思维"。</p>
+<p>这样学 Rust，不仅能写出高质量代码，更能打下坚实的计算机基础，为后续学习任何系统级开发打好底子。</p>
+<h2 id="用最简单的语言讲最深刻的道理"><a class="header" href="#用最简单的语言讲最深刻的道理">用最简单的语言，讲最深刻的道理</a></h2>
+<p><strong>这本书的另一个特色，就是用最简单、最通俗的语言来讲解 Rust。</strong></p>
+<p>我们相信，任何复杂的概念都可以用简单的话说清楚。比如：</p>
+<ul>
+<li>所有权机制？就像你借书给朋友，要么你失去这本书，要么朋友用完还给你</li>
+<li>生命周期？就像食物的保质期，过期了就不能用了</li>
+<li>并发安全？就像多个人同时用一台打印机，需要排队和协调</li>
+</ul>
+<p><strong>我们尽量避免晦涩的术语堆砌，多用生活中的类比、图示、流程图来帮助理解。</strong> 每一个知识点都会配有实际的代码示例，理论讲解之后，马上就能动手实践，做到"学以致用"。</p>
 <h2 id="ai-时代为什么更要修炼内力"><a class="header" href="#ai-时代为什么更要修炼内力">AI 时代，为什么更要修炼"内力"？</a></h2>
 <p>也许你会问：现在AI工具这么强大，写代码都能自动生成了，为什么还要花时间打基础、学底层？</p>
 <p><strong>答案很简单：AI可以帮你写代码，但只有你自己理解底层原理，才能写出真正高质量、可控、安全的系统。</strong></p>
-<p>AI能帮你生成函数、补全语法，但遇到复杂的系统设计、性能优化、并发安全、底层bug时，只有"内力"深厚的人才能看懂、调优、把控全局。
-如果你只会"用AI抄代码"，遇到AI生成的代码有隐患、性能瓶颈、架构缺陷时，你很难发现和修正。
-未来AI会成为开发者的好帮手，但<strong>只有基础扎实、理解原理的人，才能驾驭AI工具，而不是被AI限制思维和能力</strong>。</p>
-<p><strong>所以，AI时代更要修炼内力。</strong>
-你会发现，越是底层功夫扎实，越能用AI做更高效的开发、做更有创造力的系统设计。
-这本书希望带你"内外兼修"，让你在AI时代依然有不可替代的核心竞争力。</p>
-<p><strong>适合人群：</strong>
-我的初衷是希望能够照顾到多方面的人群，包括：</p>
+<p>AI能帮你生成函数、补全语法，但遇到复杂的系统设计、性能优化、并发安全、底层bug时，只有"内力"深厚的人才能看懂、调优、把控全局。如果你只会"用AI抄代码"，遇到AI生成的代码有隐患、性能瓶颈、架构缺陷时，你很难发现和修正。</p>
+<p>未来AI会成为开发者的好帮手，但<strong>只有基础扎实、理解原理的人，才能驾驭AI工具，而不是被AI限制思维和能力</strong>。</p>
+<p><strong>所以，AI时代更要修炼内力。</strong> 你会发现，越是底层功夫扎实，越能用AI做更高效的开发、做更有创造力的系统设计。这本书希望带你"内外兼修"，让你在AI时代依然有不可替代的核心竞争力。</p>
+<h2 id="适合人群"><a class="header" href="#适合人群">适合人群</a></h2>
+<p>我的初衷是希望能够照顾到多方面的人群，包括：</p>
 <ul>
-<li>零基础小白。本书穿插了很多计算机基础知识的通俗讲解，很多非专业人士也能看懂。</li>
-<li>有 C 语言基础，但对底层原理不熟悉的开发者。</li>
-<li>希望补齐"内力"，真正理解现代编程语言设计的同学。</li>
-<li>想在企业、团队中推动高质量开发和工程实践的工程师。</li>
+<li><strong>零基础小白</strong>：本书穿插了很多计算机基础知识的通俗讲解，很多非专业人士也能看懂</li>
+<li><strong>有 C 语言基础，但对底层原理不熟悉的开发者</strong>：我们会从C语言的角度出发，帮你理解Rust的设计理念</li>
+<li><strong>希望补齐"内力"，真正理解现代编程语言设计的同学</strong>：我们会深入讲解底层原理，帮你建立完整的知识体系</li>
+<li><strong>想在企业、团队中推动高质量开发和工程实践的工程师</strong>：我们会分享很多实际项目中的经验和最佳实践</li>
 </ul>
 <blockquote>
 <p>这本书不是单纯教你 Rust 语法，而是带你"内外兼修"，让你在学 Rust 的同时，补齐计算机基础，提升底层功力，成为真正的现代系统开发者。</p>
 </blockquote>
 <h2 id="目录"><a class="header" href="#目录">目录</a></h2>
 <ul>
-<li><a href="./ch0.html">为什么是这本书</a></li>
+<li><a href="./ch0.html">本书介绍</a></li>
 <li><a href="./ch1.html">Rust语言背景与发展</a></li>
-<li><a href="./ch2.html">学习Rust的计算机基础</a></li>
-<li><a href="./ch3.html">程序的编译与执行流程</a></li>
-<li><a href="./ch4.html">Rust语言特性</a></li>
+<li><a href="./ch2.html">Rust开发工具与环境</a></li>
+<li><a href="./ch3.html">计算机基础</a></li>
+<li><a href="./ch4.html">程序编译与执行流程</a></li>
+<li><a href="./ch5.html">Rust语言特性（与C对比）</a></li>
+<li><a href="./ch6.html">变量、数据类型与基本运算</a></li>
+<li><a href="./ch7.html">流程控制与模式匹配</a></li>
 <li><a href="copyright.html">版权声明</a></li>
 </ul>
 
@@ -245,8 +267,8 @@
         </script>
 
         <script src="ace.js"></script>
-        <script src="editor.js"></script>
         <script src="mode-rust.js"></script>
+        <script src="editor.js"></script>
         <script src="theme-dawn.js"></script>
         <script src="theme-tomorrow_night.js"></script>
 
