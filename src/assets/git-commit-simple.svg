@@ -1,0 +1,51 @@
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .title { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #333; }
+    .subtitle { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #555; }
+    .text { font-family: Arial, sans-serif; font-size: 12px; fill: #666; }
+    .code { font-family: 'Courier New', monospace; font-size: 11px; fill: #333; }
+    .type { fill: #ff6b6b; font-weight: bold; }
+    .scope { fill: #4ecdc4; font-weight: bold; }
+    .description { fill: #333; }
+    .good { fill: #d4edda; stroke: #c3e6cb; stroke-width: 1; }
+    .bad { fill: #f8d7da; stroke: #f5c6cb; stroke-width: 1; }
+  </style>
+  
+  <text x="400" y="30" text-anchor="middle" class="title">Git 提交信息规范</text>
+  
+  <!-- 格式说明 -->
+  <text x="400" y="60" text-anchor="middle" class="subtitle">约定式提交格式</text>
+  
+  <text x="400" y="85" text-anchor="middle" class="code">
+    <tspan class="type">feat</tspan>
+    <tspan class="text">(</tspan>
+    <tspan class="scope">auth</tspan>
+    <tspan class="text">): </tspan>
+    <tspan class="description">添加用户登录功能</tspan>
+  </text>
+  <text x="400" y="100" text-anchor="middle" class="text">类型(作用域): 描述</text>
+  
+  <!-- 类型说明 -->
+  <text x="400" y="130" text-anchor="middle" class="subtitle">常用类型</text>
+  
+  <text x="50" y="155" class="code">feat: 新功能</text>
+  <text x="200" y="155" class="code">fix: 修复bug</text>
+  <text x="350" y="155" class="code">docs: 文档更新</text>
+  <text x="500" y="155" class="code">style: 代码格式</text>
+  
+  <text x="50" y="175" class="code">refactor: 重构</text>
+  <text x="200" y="175" class="code">test: 测试相关</text>
+  <text x="350" y="175" class="code">chore: 构建工具</text>
+  <text x="500" y="175" class="code">perf: 性能优化</text>
+  
+  <!-- 示例对比 -->
+  <text x="400" y="210" text-anchor="middle" class="subtitle">好与坏的提交信息对比</text>
+  
+  <rect x="50" y="230" width="300" height="50" class="good"/>
+  <text x="60" y="250" class="subtitle">✅ 好的提交信息</text>
+  <text x="60" y="270" class="code">feat(auth): 添加用户登录功能</text>
+  
+  <rect x="450" y="230" width="300" height="50" class="bad"/>
+  <text x="460" y="250" class="subtitle">❌ 坏的提交信息</text>
+  <text x="460" y="270" class="code">update, fix bug, WIP</text>
+</svg> 

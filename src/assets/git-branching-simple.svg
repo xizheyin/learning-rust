@@ -1,0 +1,79 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .title { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #333; }
+    .subtitle { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #555; }
+    .text { font-family: Arial, sans-serif; font-size: 12px; fill: #666; }
+    .main-branch { stroke: #ff6b6b; stroke-width: 3; fill: none; }
+    .develop-branch { stroke: #4ecdc4; stroke-width: 3; fill: none; }
+    .feature-branch { stroke: #45b7d1; stroke-width: 2; fill: none; }
+    .commit { fill: #333; }
+    .commit-text { font-family: Arial, sans-serif; font-size: 10px; fill: #fff; text-anchor: middle; }
+  </style>
+  
+  <text x="400" y="30" text-anchor="middle" class="title">Git 分支管理策略对比</text>
+  
+  <!-- Git Flow -->
+  <text x="400" y="60" text-anchor="middle" class="subtitle">Git Flow (复杂项目)</text>
+  
+  <line x1="50" y1="80" x2="750" y2="80" class="main-branch"/>
+  <circle cx="100" cy="80" r="6" class="commit"/>
+  <text x="100" y="84" class="commit-text">C1</text>
+  <circle cx="200" cy="80" r="6" class="commit"/>
+  <text x="200" y="84" class="commit-text">C2</text>
+  <circle cx="400" cy="80" r="6" class="commit"/>
+  <text x="400" y="84" class="commit-text">C3</text>
+  <circle cx="600" cy="80" r="6" class="commit"/>
+  <text x="600" y="84" class="commit-text">C4</text>
+  <text x="750" y="85" class="text">main</text>
+  
+  <line x1="100" y1="100" x2="750" y2="100" class="develop-branch"/>
+  <circle cx="150" cy="100" r="6" class="commit"/>
+  <text x="150" y="104" class="commit-text">D1</text>
+  <circle cx="300" cy="100" r="6" class="commit"/>
+  <text x="300" y="104" class="commit-text">D2</text>
+  <circle cx="500" cy="100" r="6" class="commit"/>
+  <text x="500" y="104" class="commit-text">D3</text>
+  <text x="750" y="105" class="text">develop</text>
+  
+  <line x1="200" y1="120" x2="300" y2="120" class="feature-branch"/>
+  <circle cx="250" cy="120" r="4" class="commit"/>
+  <text x="250" y="123" class="commit-text">F1</text>
+  <text x="300" y="125" class="text">feature</text>
+  
+  <!-- GitHub Flow -->
+  <text x="400" y="180" text-anchor="middle" class="subtitle">GitHub Flow (简单项目)</text>
+  
+  <line x1="50" y1="200" x2="750" y2="200" class="main-branch"/>
+  <circle cx="100" cy="200" r="6" class="commit"/>
+  <text x="100" y="204" class="commit-text">C1</text>
+  <circle cx="200" cy="200" r="6" class="commit"/>
+  <text x="200" y="204" class="commit-text">C2</text>
+  <circle cx="300" cy="200" r="6" class="commit"/>
+  <text x="300" y="204" class="commit-text">C3</text>
+  <circle cx="400" cy="200" r="6" class="commit"/>
+  <text x="400" y="204" class="commit-text">C4</text>
+  <circle cx="500" cy="200" r="6" class="commit"/>
+  <text x="500" y="204" class="commit-text">C5</text>
+  <text x="750" y="205" class="text">main</text>
+  
+  <line x1="150" y1="220" x2="250" y2="220" class="feature-branch"/>
+  <circle cx="200" cy="220" r="4" class="commit"/>
+  <text x="200" y="223" class="commit-text">F1</text>
+  
+  <line x1="300" y1="240" x2="400" y2="240" class="feature-branch"/>
+  <circle cx="350" cy="240" r="4" class="commit"/>
+  <text x="350" y="243" class="commit-text">F2</text>
+  
+  <!-- 图例 -->
+  <text x="400" y="290" text-anchor="middle" class="subtitle">图例</text>
+  <line x1="50" y1="310" x2="100" y2="310" class="main-branch"/>
+  <text x="120" y="315" class="text">main - 生产环境</text>
+  
+  <line x1="250" y1="310" x2="300" y2="310" class="develop-branch"/>
+  <text x="320" y="315" class="text">develop - 开发集成</text>
+  
+  <line x1="450" y1="310" x2="500" y2="310" class="feature-branch"/>
+  <text x="520" y="315" class="text">feature - 功能开发</text>
+  
+  <text x="400" y="350" text-anchor="middle" class="text">Git Flow适合大型项目，GitHub Flow适合小型团队</text>
+</svg> 

@@ -1,0 +1,70 @@
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .title { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #333; }
+    .subtitle { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #555; }
+    .text { font-family: Arial, sans-serif; font-size: 12px; fill: #666; }
+    .box { fill: #e3f2fd; stroke: #1976d2; stroke-width: 2; }
+    .commit-box { fill: #e8f5e8; stroke: #4caf50; stroke-width: 2; }
+    .tree-box { fill: #fff3e0; stroke: #ff9800; stroke-width: 2; }
+    .blob-box { fill: #fce4ec; stroke: #e91e63; stroke-width: 2; }
+    .arrow { stroke: #666; stroke-width: 2; fill: none; }
+  </style>
+  
+  <text x="400" y="30" text-anchor="middle" class="title">Git 内部数据结构</text>
+  
+  <!-- 对象模型 -->
+  <text x="400" y="60" text-anchor="middle" class="subtitle">Git 对象模型</text>
+  
+  <rect x="50" y="80" width="150" height="60" class="commit-box"/>
+  <text x="125" y="105" text-anchor="middle" class="subtitle">Commit</text>
+  <text x="125" y="125" text-anchor="middle" class="text">提交对象</text>
+  
+  <rect x="250" y="80" width="150" height="60" class="tree-box"/>
+  <text x="325" y="105" text-anchor="middle" class="subtitle">Tree</text>
+  <text x="325" y="125" text-anchor="middle" class="text">树对象</text>
+  
+  <rect x="450" y="80" width="150" height="60" class="blob-box"/>
+  <text x="525" y="105" text-anchor="middle" class="subtitle">Blob</text>
+  <text x="525" y="125" text-anchor="middle" class="text">文件对象</text>
+  
+  <line x1="200" y1="110" x2="250" y2="110" class="arrow"/>
+  <line x1="400" y1="110" x2="450" y2="110" class="arrow"/>
+  
+  <!-- 引用 -->
+  <text x="400" y="170" text-anchor="middle" class="subtitle">引用和指针</text>
+  
+  <rect x="50" y="190" width="120" height="40" class="box"/>
+  <text x="110" y="210" text-anchor="middle" class="text">HEAD</text>
+  <text x="110" y="225" text-anchor="middle" class="text">当前分支</text>
+  
+  <rect x="200" y="190" width="120" height="40" class="box"/>
+  <text x="260" y="210" text-anchor="middle" class="text">refs/heads/main</text>
+  <text x="260" y="225" text-anchor="middle" class="text">主分支</text>
+  
+  <rect x="350" y="190" width="120" height="40" class="box"/>
+  <text x="410" y="210" text-anchor="middle" class="text">refs/tags/v1.0</text>
+  <text x="410" y="225" text-anchor="middle" class="text">标签</text>
+  
+  <rect x="500" y="190" width="120" height="40" class="box"/>
+  <text x="560" y="210" text-anchor="middle" class="text">refs/remotes/origin</text>
+  <text x="560" y="225" text-anchor="middle" class="text">远程引用</text>
+  
+  <line x1="110" y1="230" x2="110" y2="250" class="arrow"/>
+  <line x1="260" y1="230" x2="260" y2="250" class="arrow"/>
+  <line x1="410" y1="230" x2="410" y2="250" class="arrow"/>
+  <line x1="560" y1="230" x2="560" y2="250" class="arrow"/>
+  
+  <!-- 提交历史 -->
+  <circle cx="110" cy="270" r="6" class="commit"/>
+  <text x="110" y="275" class="text">C1</text>
+  <circle cx="260" cy="270" r="6" class="commit"/>
+  <text x="260" y="275" class="text">C2</text>
+  <circle cx="410" cy="270" r="6" class="commit"/>
+  <text x="410" y="275" class="text">C3</text>
+  <circle cx="560" cy="270" r="6" class="commit"/>
+  <text x="560" y="275" class="text">C4</text>
+  
+  <line x1="116" y1="270" x2="254" y2="270" stroke="#ccc" stroke-width="1"/>
+  <line x1="266" y1="270" x2="404" y2="270" stroke="#ccc" stroke-width="1"/>
+  <line x1="416" y1="270" x2="554" y2="270" stroke="#ccc" stroke-width="1"/>
+</svg> 
