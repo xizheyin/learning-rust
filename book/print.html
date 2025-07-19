@@ -5431,13 +5431,13 @@ println!("{}", first);
 <h3 id="git的核心思想与架构"><a class="header" href="#git的核心思想与架构">Git的核心思想与架构</a></h3>
 <p>Git的设计理念是"分布式版本控制"，这意味着每个开发者都拥有完整的代码仓库副本。这种设计带来了几个重要优势：首先，开发者可以在没有网络连接的情况下继续工作；其次，每个副本都是完整的备份，提高了数据安全性；最后，支持多种协作模式，从简单的代码共享到复杂的开源项目协作。</p>
 <p>Git的内部架构基于三个主要区域：工作区（Working Directory）、暂存区（Staging Area）和版本库（Repository）。工作区是你实际编辑文件的地方，暂存区用于准备下一次提交的变更，版本库则存储所有的提交历史。这种设计让你可以精确控制哪些变更要提交，哪些要保留在工作区。</p>
-<p><img src="../assets/git-structure-simple.svg" alt="Git内部数据结构" /></p>
+<p><img src="./assets/git-structure-simple.svg" alt="Git内部数据结构" /></p>
 <p>这个图表展示了Git的内部数据结构。Git使用内容寻址存储系统，所有数据都以对象的形式存储，每个对象都有唯一的SHA-1哈希值。Commit对象包含树对象引用、父提交引用和元数据（作者、时间等）。Tree对象记录目录结构和文件引用，类似于文件系统的目录。Blob对象存储文件的实际内容。</p>
 <p>引用（refs）是可变指针，指向特定的提交。HEAD指向当前分支，分支引用（如refs/heads/main）指向分支的最新提交，标签引用（如refs/tags/v1.0）指向特定的提交，远程引用（如refs/remotes/origin/main）记录远程分支的状态。</p>
 <p>这种设计使得Git能够高效地存储和检索数据，支持快速的分支切换和合并操作。每个提交都是完整的快照，但通过增量存储和压缩技术，Git能够节省存储空间。</p>
 <h3 id="git的基本操作与工作流"><a class="header" href="#git的基本操作与工作流">Git的基本操作与工作流</a></h3>
 <p>Git的基本工作流可以概括为"修改-暂存-提交-推送"四个步骤。首先，你在工作区修改文件；然后使用<code>git add</code>命令将修改添加到暂存区；接着使用<code>git commit</code>创建提交记录；最后使用<code>git push</code>将提交推送到远程仓库。</p>
-<p><img src="../assets/git-workflow-simple.svg" alt="Git基本工作流程" /></p>
+<p><img src="./assets/git-workflow-simple.svg" alt="Git基本工作流程" /></p>
 <p>这个流程图清晰地展示了Git的三个主要区域（工作区、暂存区、版本库）以及它们之间的关系。工作区是你实际编辑文件的地方，暂存区用于准备下一次提交的变更，版本库存储所有的提交历史。通过这个设计，你可以精确控制哪些变更要提交，哪些要保留在工作区。</p>
 <p>在实际开发中，你还需要经常使用<code>git pull</code>或<code>git fetch</code>来获取远程仓库的最新变更。<code>git pull</code>会自动合并远程变更到当前分支，而<code>git fetch</code>只下载变更但不合并，让你可以手动决定如何处理这些变更。</p>
 <h3 id="分支与合并策略"><a class="header" href="#分支与合并策略">分支与合并策略</a></h3>
@@ -5447,12 +5447,12 @@ println!("{}", first);
 <p>Git Flow是最复杂但最完整的分支策略，适合有明确发布周期的大型项目。它定义了五种分支类型：主分支（main）存储生产环境的代码，开发分支（develop）是开发的主要集成点，功能分支（feature）用于开发新功能，发布分支（release）用于准备新版本，热修复分支（hotfix）用于紧急修复生产环境的问题。</p>
 <p>GitHub Flow则更加简洁实用，特别适合持续部署的项目。它只有两种分支：主分支（main）和功能分支（feature）。开发者在功能分支上工作，完成后创建Pull Request，经过代码审查后合并到主分支并立即部署。这种策略减少了分支管理的复杂性，提高了开发效率。</p>
 <p>GitLab Flow是GitHub Flow的扩展，增加了环境分支的概念。除了主分支和功能分支，还有预发布分支（pre-production）和生产分支（production），分别对应不同的部署环境。</p>
-<p><img src="../assets/git-branching-simple.svg" alt="Git分支管理策略对比" /></p>
+<p><img src="./assets/git-branching-simple.svg" alt="Git分支管理策略对比" /></p>
 <p>这个分支图对比了Git Flow和GitHub Flow两种策略。上半部分展示了Git Flow的复杂分支结构，包括main、develop、feature、release和hotfix分支，适合大型项目和有明确发布周期的团队。下半部分展示了GitHub Flow的简洁结构，只有main分支和feature分支，适合小型团队和持续部署的项目。</p>
 <p>从图中可以看出，Git Flow的分支层次更多，管理更复杂，但提供了更精细的控制。GitHub Flow则更加直接，减少了分支管理的开销，特别适合快速迭代的项目。</p>
 <h3 id="提交信息规范与最佳实践"><a class="header" href="#提交信息规范与最佳实践">提交信息规范与最佳实践</a></h3>
 <p>好的提交信息是项目维护的重要基础。建议使用约定式提交（Conventional Commits）格式，包括类型、描述和可选的正文。常见的类型包括：feat（新功能）、fix（修复bug）、docs（文档更新）、style（代码格式调整）、refactor（代码重构）、test（测试相关）、chore（构建过程或辅助工具的变动）。</p>
-<p><img src="../assets/git-commit-simple.svg" alt="Git提交信息规范" /></p>
+<p><img src="./assets/git-commit-simple.svg" alt="Git提交信息规范" /></p>
 <p>这个图表展示了约定式提交的格式和最佳实践。提交信息的标准格式是<code>&lt;type&gt;(&lt;scope&gt;): &lt;description&gt;</code>，其中类型（type）表示变更的性质，作用域（scope）表示变更影响的范围，描述（description）简洁地说明变更内容。</p>
 <p>图表中对比了好与坏的提交信息示例。好的提交信息如"feat(auth): 添加用户登录功能"清楚地说明了这是一个新功能，影响认证模块，具体是添加登录功能。而坏的提交信息如"update"、"fix bug"、"WIP"等过于模糊，无法让其他开发者快速理解变更的目的和影响。</p>
 <p>除了格式规范，提交信息的内容也很重要。描述应该简洁明了，说明这次变更的目的和影响。如果变更比较复杂，可以在正文中详细说明原因和实现细节。</p>
@@ -5462,7 +5462,7 @@ println!("{}", first);
 <p><code>git bisect</code>是一个调试工具，可以帮助你快速定位引入bug的提交。它使用二分查找算法，通过标记好的提交和坏的提交，自动测试中间的提交，直到找到问题所在。</p>
 <h3 id="冲突解决与协作技巧"><a class="header" href="#冲突解决与协作技巧">冲突解决与协作技巧</a></h3>
 <p>在多人协作的项目中，合并冲突是不可避免的。当两个分支修改了同一个文件的同一部分时，Git无法自动合并，需要手动解决冲突。</p>
-<p><img src="../assets/git-conflict-simple.svg" alt="Git合并冲突解决过程" /></p>
+<p><img src="./assets/git-conflict-simple.svg" alt="Git合并冲突解决过程" /></p>
 <p>这个图表详细展示了合并冲突的产生和解决过程。上半部分显示了分支合并冲突的场景：两个功能分支（feature1和feature2）都从同一个提交点（B）分叉出来，当它们都尝试合并回主分支时，如果修改了同一个文件的同一部分，就会产生冲突。</p>
 <p>下半部分展示了具体的冲突文件内容。左侧显示冲突前的文件状态，右侧显示冲突后的文件，其中包含了Git的冲突标记：<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code>、<code>=======</code>和<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature1</code>。这些标记清楚地标识了冲突的区域，让你知道哪些代码来自当前分支，哪些来自要合并的分支。</p>
 <p>解决冲突的基本步骤是：首先使用<code>git status</code>查看冲突文件，然后打开冲突文件，找到冲突标记（&lt;&lt;&lt;&lt;&lt;&lt;&lt;、=======、&gt;&gt;&gt;&gt;&gt;&gt;&gt;），手动编辑文件解决冲突，最后使用<code>git add</code>标记冲突已解决，使用<code>git commit</code>完成合并。</p>

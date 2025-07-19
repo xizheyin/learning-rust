@@ -14,7 +14,7 @@ Git的设计理念是"分布式版本控制"，这意味着每个开发者都拥
 
 Git的内部架构基于三个主要区域：工作区（Working Directory）、暂存区（Staging Area）和版本库（Repository）。工作区是你实际编辑文件的地方，暂存区用于准备下一次提交的变更，版本库则存储所有的提交历史。这种设计让你可以精确控制哪些变更要提交，哪些要保留在工作区。
 
-![Git内部数据结构](../assets/git-structure-simple.svg)
+![Git内部数据结构](./assets/git-structure-simple.svg)
 
 这个图表展示了Git的内部数据结构。Git使用内容寻址存储系统，所有数据都以对象的形式存储，每个对象都有唯一的SHA-1哈希值。Commit对象包含树对象引用、父提交引用和元数据（作者、时间等）。Tree对象记录目录结构和文件引用，类似于文件系统的目录。Blob对象存储文件的实际内容。
 
@@ -26,7 +26,7 @@ Git的内部架构基于三个主要区域：工作区（Working Directory）、
 
 Git的基本工作流可以概括为"修改-暂存-提交-推送"四个步骤。首先，你在工作区修改文件；然后使用`git add`命令将修改添加到暂存区；接着使用`git commit`创建提交记录；最后使用`git push`将提交推送到远程仓库。
 
-![Git基本工作流程](../assets/git-workflow-simple.svg)
+![Git基本工作流程](./assets/git-workflow-simple.svg)
 
 这个流程图清晰地展示了Git的三个主要区域（工作区、暂存区、版本库）以及它们之间的关系。工作区是你实际编辑文件的地方，暂存区用于准备下一次提交的变更，版本库存储所有的提交历史。通过这个设计，你可以精确控制哪些变更要提交，哪些要保留在工作区。
 
@@ -46,7 +46,7 @@ GitHub Flow则更加简洁实用，特别适合持续部署的项目。它只有
 
 GitLab Flow是GitHub Flow的扩展，增加了环境分支的概念。除了主分支和功能分支，还有预发布分支（pre-production）和生产分支（production），分别对应不同的部署环境。
 
-![Git分支管理策略对比](../assets/git-branching-simple.svg)
+![Git分支管理策略对比](./assets/git-branching-simple.svg)
 
 这个分支图对比了Git Flow和GitHub Flow两种策略。上半部分展示了Git Flow的复杂分支结构，包括main、develop、feature、release和hotfix分支，适合大型项目和有明确发布周期的团队。下半部分展示了GitHub Flow的简洁结构，只有main分支和feature分支，适合小型团队和持续部署的项目。
 
@@ -56,7 +56,7 @@ GitLab Flow是GitHub Flow的扩展，增加了环境分支的概念。除了主�
 
 好的提交信息是项目维护的重要基础。建议使用约定式提交（Conventional Commits）格式，包括类型、描述和可选的正文。常见的类型包括：feat（新功能）、fix（修复bug）、docs（文档更新）、style（代码格式调整）、refactor（代码重构）、test（测试相关）、chore（构建过程或辅助工具的变动）。
 
-![Git提交信息规范](../assets/git-commit-simple.svg)
+![Git提交信息规范](./assets/git-commit-simple.svg)
 
 这个图表展示了约定式提交的格式和最佳实践。提交信息的标准格式是`<type>(<scope>): <description>`，其中类型（type）表示变更的性质，作用域（scope）表示变更影响的范围，描述（description）简洁地说明变更内容。
 
@@ -76,7 +76,7 @@ Git提供了许多高级功能来帮助开发者更高效地工作。`git stash`
 
 在多人协作的项目中，合并冲突是不可避免的。当两个分支修改了同一个文件的同一部分时，Git无法自动合并，需要手动解决冲突。
 
-![Git合并冲突解决过程](../assets/git-conflict-simple.svg)
+![Git合并冲突解决过程](./assets/git-conflict-simple.svg)
 
 这个图表详细展示了合并冲突的产生和解决过程。上半部分显示了分支合并冲突的场景：两个功能分支（feature1和feature2）都从同一个提交点（B）分叉出来，当它们都尝试合并回主分支时，如果修改了同一个文件的同一部分，就会产生冲突。
 
